@@ -1,3 +1,3 @@
 ## Video
 
-[Click here](./final_whole_50Mb.mp4)
+[Click here](./final_whole.mp4)
