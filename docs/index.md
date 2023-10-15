@@ -6,7 +6,7 @@ The source code will be released after the publication of the paper.
 
 ## Video
 
-[Video](./final_whole.mp4)
+[[Video](./final_whole.mp4)]
 
 ## Abstract
 
