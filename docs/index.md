@@ -6,6 +6,8 @@ The paper is the journal version of [this (ICRA 2023)](https://mingrui-yu.github
 
 The source code will be released after the publication of the paper.
 
+[[arXiv](https://arxiv.org/abs/2310.09899)]
+
 ## Video
 
 [[Video](./final_whole.mp4)]
