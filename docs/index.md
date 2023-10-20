@@ -2,6 +2,8 @@
 
 The paper is under review.
 
+The paper is the journal version of [this (ICRA 2023)](https://mingrui-yu.github.io/DLO_planning/).
+
 The source code will be released after the publication of the paper.
 
 ## Video
@@ -19,3 +21,9 @@ Then, a closed-loop manipulation scheme is proposed to compensate for the modeli
 This framework systematically considers multiple constraints for this problem, including stable deformation, overstretch prevention, closed-chain movements, and collision avoidance. The key novelty is that it can efficiently solve the high-dimensional problem subject to all those constraints and generalize to various DLOs without elaborate model identifications.
 
 Experiments demonstrate that our framework can accomplish considerably more complicated tasks than existing works. It achieves a 100% planning success rate among thousands of trials with an average time cost of less than 15 second, and a 100% manipulation success rate among 135 real-world tests on five different DLOs.
+
+
+## Contact
+If you have any question, feel free to contact the authors: Mingrui Yu, [mingruiyu98@gmail.com](mailto:mingruiyu98@gmail.com) .
+
+Mingrui Yu's Homepage is at [mingrui-yu.github.io](https://mingrui-yu.github.io).
