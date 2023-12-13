@@ -10,7 +10,9 @@ The source code will be released after the publication of the paper.
 
 ## Video
 
-[[Video](./final_whole.mp4)]
+<p align="center">
+<iframe width="800" height="450" src="./final_whole.mp4" title="23_DLO_planning_journal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
+</p>
 
 ## Abstract
 
