@@ -26,6 +26,19 @@ This framework systematically considers multiple constraints for this problem, i
 
 Experiments demonstrate that our framework can accomplish considerably more complicated tasks than existing works. It achieves a 100% planning success rate among thousands of trials with an average time cost of less than 15 second, and a 100% manipulation success rate among 135 real-world tests on five different DLOs.
 
+## Citation
+
+Please cite our paper if you find it helpful :)
+
+```
+@article{yu2023generalizable,
+  title={Generalizable whole-body global manipulation of deformable linear objects by dual-arm robot in 3-d constrained environments},
+  author={Yu, Mingrui and Lv, Kangchen and Wang, Changhao and Jiang, Yongpeng and Tomizuka, Masayoshi and Li, Xiang},
+  journal={The International Journal of Robotics Research},
+  year={2024}
+}
+```
+
 ## Contact
 
 If you have any question, feel free to contact the authors: Mingrui Yu, [mingruiyu98@gmail.com](mailto:mingruiyu98@gmail.com) .
