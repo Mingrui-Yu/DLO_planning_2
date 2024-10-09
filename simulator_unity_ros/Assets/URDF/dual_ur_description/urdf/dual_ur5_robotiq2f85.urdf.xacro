@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="dual_ur_robotiq2f85">
+
+
+  <!-- *************************************************************************************************** -->
+  <!-- import dual_ur5 -->
+  <xacro:include filename="$(find dual_ur_description)/urdf/dual_ur5.urdf.xacro"/>
+
+  <!-- parameters -->
+   <xacro:arg name="joint_limit_params" default="$(find ur_description)/config/ur5/joint_limits.yaml"/>
+   <xacro:arg name="kinematics_params" default="$(find ur_description)/config/ur5/default_kinematics.yaml"/>
+   <xacro:arg name="physical_params" default="$(find ur_description)/config/ur5/physical_parameters.yaml"/>
+   <xacro:arg name="visual_params" default="$(find ur_description)/config/ur5/visual_parameters.yaml"/>
+   <!-- legal values:
+         - hardware_interface/PositionJointInterface
+         - hardware_interface/VelocityJointInterface
+         - hardware_interface/EffortJointInterface
+   -->
+   <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+   <xacro:arg name="safety_limits" default="false"/>
+   <xacro:arg name="safety_pos_margin" default="0.15"/>
+   <xacro:arg name="safety_k_position" default="20"/>
+
+
+
+
+  <!-- *************************************************************************************************** -->
+  <!-- import grippers -->
+
+  <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_macro.xacro" />
+
+  <!-- parameters -->
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/EffortJointInterface"/>
+  
+  <!-- gripper left -->
+  <xacro:robotiq_arg2f_85 
+    prefix="gripper_0_"
+    transmission_hw_interface="$(arg transmission_hw_interface)"/>
+
+  <!-- gripper right -->
+  <xacro:robotiq_arg2f_85 
+    prefix="gripper_1_"
+    transmission_hw_interface="$(arg transmission_hw_interface)"/>
+
+
+
+
+  <!-- *************************************************************************************************** -->
+  <!-- setup joints -->
+
+  <!-- joints between arm and gripper -->
+  <joint name="arm_0_gripper_0_joint" type="fixed">
+    <parent link="arm_0_tool0" />
+    <child link="gripper_0_base_link" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="arm_1_gripper_1_joint" type="fixed">
+    <parent link="arm_1_tool0" />
+    <child link="gripper_1_base_link" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+
+</robot>

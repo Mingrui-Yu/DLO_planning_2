@@ -1,0 +1,12 @@
+# request
+float64 dlo_length
+float64[] start_dual_arm_joint_pos
+float64[] start_dlo_shape
+float64[] goal_dlo_shape
+
+---
+
+# response
+bool success
+Waypoint[] path
+float64 time

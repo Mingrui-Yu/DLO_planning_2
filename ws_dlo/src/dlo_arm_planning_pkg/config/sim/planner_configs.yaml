@@ -1,0 +1,46 @@
+planner_configs:
+  common:
+    use_underactuated_steer: true 
+
+    dlo_sample_range:
+      lb: [0.0, -0.5, -0.6]
+      ub: [1.0, 0.5, 0.1]
+    
+    dlo_projection:
+      function_tolerance: 0.000001
+      max_num_iterations: 20000
+
+    pose_distance:
+      pos_weight: 1.0
+      rot_weight: 0.1
+
+    num_random_sample_goal: 50
+    new_goal_ik_probability: 0.1
+
+    rrt_max_iter: 50000
+    extend_max_steps: 100
+    path_smooth_max_iter: 200
+
+    # collision check step size
+    path_collision_check_step_size: 0.05 # (not used)
+    path_collision_check_cartesian_step_size: 0.005 # unit: m
+    collision_check_min_dist_thres: 0.01 # should be non-zero; distance between waypoint and obstacles must > this threshold; 
+    
+    # steer step size
+    steer_joint_step_size: 0.2 # unit: rad
+    steer_dlo_cartesian_step_size: 0.05 # unit: m
+    steer_dlo_angle_step_size: 0.2 # unit: rad
+
+    # connect distance (usually 2 * steer step size); used only in steering and sampling new IKs
+    connect_joint_max_dist: 0.4 # unit: rad
+    connect_cartesian_max_dist: 0.1 # unit: m
+
+    constraint_error_thres: 0.001
+    constraint_projection_max_iter: 20
+    constraint_step_gain: 1.0
+
+    path_interpolation_step_size: 0.01 # only used for visualization
+
+
+  JointBiRRT:
+    sample_only_dlo_probability: 0.5

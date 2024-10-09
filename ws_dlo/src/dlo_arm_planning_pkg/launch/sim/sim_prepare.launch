@@ -1,0 +1,41 @@
+<launch>
+
+    <arg name="add_dual_base_as_obstacles" default="true" />
+
+    <rosparam command="load" file="$(find dlo_arm_planning_pkg)/config/sim/configs.yaml" />
+    <rosparam command="load" file="$(find dlo_arm_planning_pkg)/config/sim/planner_configs.yaml" />
+
+    <rosparam command="load" file="$(find dlo_arm_planning_pkg)/config/sim/dual_ur_configs.yaml" />
+    <rosparam command="load"
+        file="$(find dlo_arm_planning_pkg)/config/sim/dual_ur_collision_shape_spheres.yaml" />
+
+    <!-- move_group get the real-time arm joint states -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <rosparam param="source_list">[/state/dual_arm_gripper/joint_states]</rosparam>
+    </node>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="true" output="screen" />
+
+    <!-- launch move_group -->
+    <include file="$(find dual_ur5_robotiq2f85_moveit_config)/launch/demo.launch">
+        <arg name="moveit_controller_manager" value="simple" />
+        <arg name="use_gui" value="false" />
+        <arg name="use_rviz" value="false" />
+    </include>
+
+    <!-- setting the subscriber for the environment pointcloud and the octomap of the planning scene
+    (must be run after move_group.launch since it will overwrite some ros parameters) -->
+    <rosparam ns="move_group" command="load"
+        file="$(find dlo_arm_planning_pkg)/config/sim/move_group_octomap.yaml" />
+
+    <!-- add dual_base as collision obstacles to the scene -->
+    <node name="add_dual_base_as_obstacles" pkg="dlo_arm_planning_pkg"
+        type="add_dual_base_as_obstacles_sim" output="screen" if="$(arg add_dual_base_as_obstacles)" />
+
+    <node name="rviz_node" pkg="rviz" type="rviz" respawn="false"
+        args="-d $(find dlo_arm_planning_pkg)/rviz/sim.rviz" output="screen">
+    </node>
+
+
+</launch>

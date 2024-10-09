@@ -1,0 +1,30 @@
+robot_configs:
+  arm_0:
+    base_link_name: "dual_base"
+    ee_link_name: "arm_0_tool0"
+    critical_link_names: ["arm_0_shoulder_link", "arm_0_upper_arm_link", "arm_0_forearm_link", 
+                        "arm_0_wrist_1_link", "arm_0_wrist_2_link", "arm_0_wrist_3_link", "arm_0_tool0"]
+    tcp_in_ee_pose:
+      position: [0.0, 0.0, 0.145]
+      orientation: [0.707106781, 0.707106781, 0.0, 0.0] # [x, y, z, w]
+    joint_pos_weight: [1.0, 1.0, 1.0, 1.0, 0.2, 0.2]
+    joint_sample_lb: [1.57, -4.71, -3.14, -4.71, -3.14, -3.14]
+    joint_sample_ub: [4.71, 1.57, 0.0, 1.57, 3.14, 3.14]
+    
+  arm_1:
+    base_link_name: "dual_base"
+    ee_link_name: "arm_1_tool0"
+    critical_link_names: ["arm_1_shoulder_link", "arm_1_upper_arm_link", "arm_1_forearm_link", 
+                        "arm_1_wrist_1_link", "arm_1_wrist_2_link", "arm_1_wrist_3_link", "arm_1_tool0"]
+    tcp_in_ee_pose:
+      position: [0.0, 0.0, 0.145]
+      orientation: [0.707106781, 0.707106781, 0.0, 0.0] # [x, y, z, w]
+    joint_pos_weight: [1.0, 1.0, 1.0, 1.0, 0.2, 0.2]
+    joint_sample_lb: [1.57, -4.71, 0.0, -4.71, -3.14, -3.14]
+    joint_sample_ub: [4.71, 1.57, 3.14, 1.57, 3.14, 3.14]
+
+  dual_arm:
+    base_link_name: "dual_base"
+
+    
+  

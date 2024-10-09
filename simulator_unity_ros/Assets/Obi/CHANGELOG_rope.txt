@@ -1,0 +1,379 @@
+# Change Log
+All notable changes to “Obi - Advanced ropes for Unity” will be documented in this file.
+
+## [5.6.1]
+
+### Fixed
+- Bug in Burst backend: solver bounding box size was typically underestimated.
+- Bug in Burst backend: when using volume constraints: "InvalidOperationException: The NativeContainer ApplyVolumeConstraintsBatchJob.particleIndices has not been assigned or constructed"
+- Bug in Burst backend: not releasing native arrays when empty solvers -with zero actors in them- are present in the scene.
+- Bug in Oni backend: volume constraints not working properly when multiple actors are present in the solver.
+- Fixed crash when using ObiLateUpdater or ObiLateFixedUpdater with the Burst backend.
+- Reduced GC allocation in dynamic particle attachments.
+- Fixed bug in Skin constraints, that caused them to fail restricting particle movement in certain circumstances.
+
+### Changed
+- Updated Oni iOS library to XCode 12.1. Make sure to use XCode 12.1 or up to build for iOS when using the Oni backend.
+- ObiKinematicVelocities component has been removed. Its functionality is now built into the engine, and automatically used for kinematic rigidbodies.
+
+### Added
+- Sample ObiContactDispatcher component, that will call custom enter/stay/exit contact events.
+- Support for multiple solvers in sample script in ObiContactGrabber.
+- Added util LookAroundCamera component.
+
+## [5.6]
+
+### Added
+- Faster SDF generation.
+- New sample scene.
+
+### Fixed
+- Bug that causes out of bounds access when dinamically adding/removing colliders at runtime.
+- Bug that prevented stitch constraints from working first time they were enabled.
+- Offset in particle selection brush on high density screens.
+
+### Changed
+- Constraint batches of multiple actors are now merged together. This greatly reduces the amount of dispatched jobs and improves performance on both backends.
+- Colliders no longer have a "use distance fields" boolean value, they will always use the SDF as long as they have one.
+
+## [5.5]
+
+### Added
+- Backend system: abstracts the underlying particle-based physics engine used. To the native, built-in engine (Oni), we have added a Burst-based implementation that
+will run on all platforms supported by Burst.
+
+### Changed
+- Improved path smoother, line and extruded renderer performance.
+
+## [5.4]
+
+### Fixed
+- Bug that caused a crash when using Obi in conjunction with Mirror networking system (NetworkIdentity component).
+- Bug that could cause a crash when disabling an actor under a disabled solver.
+- Bug that prevented self-collisions to work correctly between particles created at runtime by a ObiRopeCursor.
+
+### Changed
+- Recompiled iOS libraries using XCode 11.3.1, to circumvent bitcode compatibility issues now that XCode 11.4 and up have a bug that cause linking against Obi to fail. 
+
+
+## [5.3]
+
+### Added
+- Added adaptive rendering decimation to ObiPathSmoother, controllable using a curvature threshold.
+- Greatly increased numerical precision for rigidbody interaction when solvers are far away from the origin.
+- 2D colliders now span infinitely in the Z axis.
+
+### Fixed
+- Issue in the ObiStitcher editor that picked up incorrect particles when adding stitches.
+- Issue that caused a 1-frame delay for collider geometry parented inside a solver.
+- Issue in ObiParticleDragger that caused incorrect behavior with multiple solvers.
+- Bug in particle advection, that assumed diffuse particle positions to be expreseed in world space. Now advection works correctly
+for solvers not positioned at 0,0,0.
+
+## [5.2]
+
+### Added
+- Rope tear callback (cloth.OnRopeTorn)
+- Function to reset particle positions orientations and and velocities in an actor (actor.ResetParticles())
+- Added support for ObiRopeLineRenderer in SRPs.
+
+### Fixed
+- Issue with inertia rotations, that caused wrong inertia tensors for complex compound colliders.
+- Issue in particle attachments, that forced to call Bind() manually after changing their target or particle group at runtime.
+
+
+## [5.1]
+
+### Added
+-Smooth initial overlap resolution by using clamped depenetration velocity.
+-Actors now automatically create a solver root when editing them in prefab mode.
+-Brought back rope mesh baking.
+
+### Fixed
+- Bug that caused solvers with no actors in their hierarchy to freeze Unity when updated by a fixed updater.
+- Bug that prevented multiple colliders in the same object to be notified of transform changes.
+
+### Fixed
+-Fixed bug that caused null ref when attempting to edit a rope with no blueprint.
+
+## [5.0]
+
+#IMPORTANT: You’ll need to re-create all your 4.x ObiRope components. Data serialization and workflows are significantly different from previous versions.
+
+### Changed
+- Introduced blueprints: particle/constraint object representations are now stored in assets called "blueprints" (as opposed to being stored in the actor itself, as in previous versions). This improves
+memory consumption, editor performance, completely separates data from the runtime components that operate on it, and enables easier and faster workflow.
+- Non-linear, non-destructive rope editing with instant feedback.
+- Simplified underlying engine, constraints are grouped in batches using graph coloring for optimal parallelism.
+- Unified handles and pin constraints as "attachments".
+- Pin and distance constraints now correctly report forces in Newtons.
+- Unitless "Stiffness" parameters have been replaced by "Compliance" parameters in most constraint types, expressed in Newtons/meter.
+
+### Added
+- Support for multiple cursors in a single rope.
+
+### Removed
+- World space/local space simulation. Simulation is now always performed in solver space.
+- Solvers no longer have a maxParticles attribute. They dynamically change their capacity at runtime.
+
+### Fixed
+- Crash in certain iOS devices using the A12 cpu.
+
+## [4.2]
+
+### Added
+- Remade all sample scenes to work in Unity 2019.1 and above.
+
+
+## [4.1]
+
+#IMPORTANT: You’ll need to re-create all your 3.x ObiRope components, as internal data layout of previous versions as well as serialized GameObject data from previous versions is not compatible with 4.x.
+
+### Added
+- Now you can bake the rope mesh anytime, saving it as a new mesh asset in your project. Useful for set dressing and generating static geometry. Only works for ObiRopeExtrudedMeshRederer and ObiRopeMeshRenderer.
+- More accurate collision/contact model, using staggered projections.
+- Approximate shock propagation for particle contacts. This makes particle stacking easier and stabler. A new parameter has been added to the solver that controls the amount of shock propagation.
+- Split material friction into static and dynamic friction.
+- Added rolling contacts w/ rolling friction. These are slightly more expensive than regular contacts. Can be controlled on a per-collision material basis.
+- Added ObiInstancedParticleRenderer, allows to draw particles as instances of an arbitrary mesh (requires GPU instancing).
+- Particle-particle collision callbacks (solver.OnParticleCollision)
+
+### Fixed
+- Bug that caused mesh colliders with negative thickness to crash.
+
+### Changed
+- More reliable, higher precision algorithm for distance field generation. Specially noticeable in sharp corners/crevices.
+
+## [4.0.2]
+
+#IMPORTANT: You’ll need to re-create all your 3.x ObiRope components, as internal data layout of previous versions as well as serialized GameObject data from previous versions is not compatible with 4.x.
+
+### Changed
+- Switched the Windows compiler to Clang/LLVM, resulting in a huge performance improvement.
+
+### Fixed
+- Null ref exception when copying a ObiCloth component.
+- Issue with pin constraints overshooting when solver set to world space mode.
+- Issue that prevented pin constraints being torn.
+
+## [4.0]
+
+#IMPORTANT: You’ll need to re-create all your ObiRope components, as internal data layout of previous versions as well as serialized GameObject data from previous versions is not compatible with 4.x.
+
+### Added
+- New ObiRod actor: advanced rope that models torsion, as well as anisotropic bending and shearing.
+- Added 3 new constraint types: Shear/Stretch, Bend/Twist and Chain.
+- Achieved zero garbage generation trough the use of new Unity API for camera frustum planes.
+
+### Changed
+- All particle buffers (positions, velocities, etc). are now shared between C++/C# using pointers to aligned memory. This completely eliminates the need for copying data back and forth, simplifies the API
+  and improves performance. The entire Oni.Get/SetParticle* family of methods has disappeared, now you can work with the particle buffers directly.
+- Rope rendering modes have been replaced by ObiRopeRenderer components.
+
+### Fixed
+- Null ref exception when initializing a disabled actor.
+- Bug that caused XPBD to be time step dependent.
+
+## [3.5]
+
+### Added
+- Support for 32 and 64 bit Linux architectures.
+- Two-way rigidbody interaction for local-space solvers.
+- Added world inertia scale.
+- ObiCollider now takes a reference to a Collider, enabling the use of multiple colliders in the same GameObject.
+
+### Changed
+- Separated world velocity scale into linear and angular components.
+- World velocity scale is no longer specified per-actor, but per-solver.
+- Better ObiProfiler: it now shows a per-thread pyramid diagram of internal jobs, with more human-readable names.
+
+### Removed
+- Solvers no longer have a Collision Layers property. All solvers share the same colliders. Note that you can still use phases to ignore collisions with certain colliders.
+- Local space solvers no longer need their own copy of each ObiCollider in the scene, they can all share the same colliders. This results in much higher performance for multiple local-space solvers.
+
+### Fixed
+- Added (float3x3) typecast to particle shaders, to be GLES friendly.
+
+## [3.4.1]
+
+### Added
+- "Thickness from particles" now works in Custom Mesh render mode.
+- Custom Mesh mode now has a "volume scaling" parameter that squashes and stretches the mesh together with the rope.
+
+## [3.4]
+
+### Added
+- Perspective-correct particle rendering.
+- ObiParticleRenderer now supports custom shaders for rendering.
+
+### Fixed
+- Bug that required to disable and re-enable ObiParticleRenderer when moving the actor to a new solver.
+- Bug that caused twitching when performing more than 1 physics step per frame when using handles.
+
+## [3.3.1]
+
+### Fixed
+- Removed unused variable warnings introduced in 3.3
+- Fixed null ref exception when creating a new distance field asset.
+- Fixed crash when using multiple solvers in different update modes.
+- Fixed some sample scenes lacking collision due to missing distance field.
+
+## [3.3]
+
+### Added
+- Support for 2D rigidbody coupling has been brought back.
+- Added substepping to the core solver. This allows to update each solver at a different effective frequency, and decouple the Obi 
+  physics loop from Unity’s.
+- New implementation of fine-grained parallel tasks in core solver, that boosts performance up to x1.5.
+- Support for a new type of rope rendering, that can deform any mesh to follow the rope curve.
+- Support for a new collision primitive: distance fields.
+- Support for per-particle coloring of rope.
+- ObiCollider automatically creates ObiRigidbody component if needed when reparenting it.
+- Helper script (ObiKinematicVelocities) that calculates angular and linear velocities for kinematic rigidbodies that are transformed around. Useful for continuous collision detection and friction effects against objects that are being moved around using their transform instead of forces.
+
+### Changed
+- Near-zero garbage generation for OnCollision and ObFluidUpdated solver events.
+- Near-zero garbage generation for rope rendering.
+- Constraints.GetBatches() now returns an IEnumerable. This means it cannot be accesed by index. There’s a helper method GetFirstBatch() that returns
+the correctly typed first batch, or null if there’s none.
+
+### Fixed
+- Null reference exception in pin constraints when visualization is enabled.
+- Bug that caused asleep particles to miss collisions upon reactivation.
+- Bug that caused copying a rope to “steal“ the mesh from the original one.
+
+## [3.2]
+### Added
+- Support for CapsuleCollider2D.
+
+### Changed
+- Rope is still rendered (though not simulated) when the ObiRope component is disabled.
+- Colliders/rigidbodies are no longer copied over to the C++ library each frame. Instead, only colliders that have their transform or any collision-related property altered are copied to the solver. This greatly improves performance when many colliders are present, and greatly reduces memory allocation and GC activity.
+- AllocateParticles() and FreeParticles() have been merged with AddActor() and RemoveActor() respectively. A new per-particle array “particleToActor” makes it faster and easier to know which actor a particle belongs to.
+
+### Removed
+- ObiCollisionGroup has disappeared. It is no longer necessary to manually add colliders to a group, instead each ObiSolver automatically picks up all ObiColliders in a given layer.
+- MeshColliders are now always treated as two-sided thin concave meshes. Solid and one-sided modes have disappeared.
+
+### Fixed
+- Android issue that prevented some devices from finding the Oni library.
+- Removed redundant menu items.
+
+## [3.1.1]
+### Added
+- New “Line” rendering mode for ropes. This will render the rope as a camera-oriented quad strip, similar to what Unity’s LineRenderer does. This is useful for lightweight rendering and 2D games.
+- Particle renderer is now much faster and also allocates less memory.
+- New “hierarchical” method to generate tether constraints: this method generates more constraints than the traditional “anchor to fixed” approach, but works in the general case even if there are no fixed particles.
+
+### Changed
+- Installation is no longer required. Obi now works right out of the box, so the installation window has been removed, and the “Editor default resources” and “Gizmos” folders removed.
+
+## [3.1]
+### Added
+- You can now choose where should the solver be updated: FixedUpdate, AfterFixedUpdate, or LateUpdate.
+- Rope rendering now supports variable thickness, based on particle radii. Enabled by default, disable “thickness from particles” to get uniform thickness regardless of particle radii variations.
+- Edit-time preview of “smoothness” rope parameter.
+- Utility method to calculate actual rope length.
+- Support for triggers. A trigger collider will generate contact constraints, but won´t enforce them.
+- Contact structs returned by the OnCollision event now include the contact tangent and bitangent vectors.
+- Added per-particle layer properties, for finer collision control.
+
+### Changed
+- Faster and more accurate rigidbody impulse application, which results in better collision resolution.
+- Greatly improved pin constraint stability for large mass ratios.
+- ObiColliderGroup’s Colliders and Colliders2D properties are now plain arrays: “colliders” and “colliders2D”.
+- Memory allocation for rope mesh generation has been reduced by 90%.
+- ObiParticleRenderer memory allocation has been greatly reduced, and its performance improved.
+- Pin constraints are now always drawn in particle edit mode, not only when the particles are selected.
+
+### Fixed
+- Got rid of warnings related to obsolete platform enums in sample scripts.
+- Potential bug in GCHandle deallocation affecting upcoming Unity versions (thanks to the guys at Unity for pointing me at this)
+- Tearable pin constraints now work correctly.
+
+## [3.0.1]
+### Added
+- Support for iOS simulator.
+- Faster collision contact generation.
+
+### Fixed
+- Crash in Crane scene due to a bug in pin constraints.
+
+## [3.0]
+
+#IMPORTANT: You’ll need to re-generate all your ropes as internal data layout of previous versions is not compatible with this update.
+### Added 
+- Welcome window with automatic installer.
+- Upgraded constraint projection to XPBD (extended position-based dynamics). This decouples stiffness and damping from the amount of iterations, resulting in more realistic simulation.
+- Solver constraint enforcement order can now be changed. This allows to change the relative importance of constraints.
+- The solver now uses a task-based threading system which allows to exploit parallelism between multiple solvers.
+- Custom multithreading profiler, that allows to fine-tune performance.
+- Optional local-space simulation, for better numerical accuracy in large-scale worlds and greater control.
+- ObiStitcher component allows to stitch together separate ropes.
+- Added pencil paint mode to particle editor.
+- Automatic self-collisions disabling for particles that intersect in rest pose. This allows to set larger particle radii 
+  to ensure better self-collisions, without worrying about constraint fighting.
+- Breakable pin constraints.
+- Ropes are now tearable, and custom prefabs can be instantiated at both sides of the tear.
+- Rope length can be changed at runtime, using the ObiRopeCursor component.
+- Procedural curve geometry smoothing.
+
+### Changed
+- Actor particle limit is no longer 16384 but 65536, matching Unity’s own vertex limit.
+- Particle editor paint brush falloff has ben changed from linear to gaussian.
+- Distance constraints’ compression stiffness has been replaced by a slack percentage.
+- Performance improvement in mesh colliders and edge colliders.
+
+### Fixed
+- Bug in collision detection against terrains.
+- Crash in 32-bit windows systems due to memory misalignment.
+- Bug that caused slow convergence and excessive jittering for particle-particle sequential contact resolution.
+- Bug in hierarchical grid update that caused a crash in some cases when a hash key collision happened.
+- Bug in continuous collision detection that caused particles to be pushed to the other side of very thin objects.
+- Bug in ray/bounding box intersection test caused by non-IEEE754 compliant SSE division by zero.
+- Bug that caused ObiParticleRenderer to ignore camera culling mask, and render in all cameras.
+- Bug that caused a crash under certain conditions in 32 bit systems.
+- Bug that caused particle property value field to reset to the value of the last particle when painting.
+- Fixed collision stabilization bug that caused particles to sink slightly when over a dynamic rigidbody.
+
+## [1.2]
+
+### Added
+- Android support.
+- Upgraded constraint projection to XPBD (extended position-based dynamics). This decouples stiffness and damping from the amount of iterations.
+- Solver constraint enforcement order can now be changed. This allows to change the relative importance of constraints.
+- Welcome window with automatic installer.
+- Resolution-preserving method to change rope length dynamically.
+- Added pencil paint mode to particle editor.
+- Optional local-space simulation, for better numerical accuracy in large-scale worlds and greater control.
+- Custom multithreading profiler, that allows to fine-tune performance.
+- Better particle visualization in editor.
+- Breakable pin constraints.
+
+### Changed
+- Actor particle limit is no longer 16384 but 65536, matching Unity’s own vertex limit.
+- Particle editor paint brush falloff has ben changed from linear to gaussian.
+- Distance constraints’ compression stiffness has been replaced by a slack percentage.
+
+### Fixed
+- Bug that caused an index out of bounds exception when initializing rope with zero resolution.
+- Bug that caused an error message regarding MeshFilter destruction when entering play mode with a rope selected in the hierarchy.
+- Bug that prevented the particle editor window from appearing on retina displays.
+- 1-frame delay between particle and rigid body physics, which affected pin and collision constraints.
+
+## [1.1]
+
+### Added
+- MeshColliders are now fully supported.
+- Support for 2D physics, Box2D, Circle2D and Edge2D colliders.
+- Chain rendering.
+- Sleep threshold that keeps particles fixed in place when their kinetic energy is low.
+- Chain constraints, that allow for 100% inextensible ropes.
+- Rope thickness, twist, cap sections and section shape can now be changed without the need to re-initialize the rope.
+- Required constraint components are automatically removed from the object when removing the rope component in editor.
+
+### Fixed
+- Issue with box colliders, that caused incorrect contact generation in corners when using contactOffset.
+
+## [1.0.0] - 2015-07-16
+- Initial release.

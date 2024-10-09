@@ -1,0 +1,438 @@
+robot_coarse_collision_shape:
+
+    # -------------------------------
+    object_0: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 1
+        link_name: "arm_0_shoulder_link"
+      relative_pose:
+        pos: [0.0, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.07] # radius, length
+
+    object_1: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 2
+        link_name: "arm_0_upper_arm_link"
+      relative_pose:
+        pos: [0.0, 0.0, 0.13]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.07] # radius, length
+
+    object_2: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 2
+        link_name: "arm_0_upper_arm_link"
+      relative_pose:
+        pos: [-0.14, 0.0, 0.13]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.07] # radius, length
+
+    object_3: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 2
+        link_name: "arm_0_upper_arm_link"
+      relative_pose:
+        pos: [-0.28, 0.0, 0.13]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.07] # radius, length
+
+    object_4: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 2
+        link_name: "arm_0_upper_arm_link"
+      relative_pose:
+        pos: [-0.425, 0.0, 0.13]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.07] # radius, length
+
+    object_5: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 3
+        link_name: "arm_0_forearm_link"
+      relative_pose:
+        pos: [-0.325, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_6: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 3
+        link_name: "arm_0_forearm_link"
+      relative_pose:
+        pos: [-0.26, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_7: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 3
+        link_name: "arm_0_forearm_link"
+      relative_pose:
+        pos: [-0.195, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_8: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 3
+        link_name: "arm_0_forearm_link"
+      relative_pose:
+        pos: [-0.1975, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_9: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 3
+        link_name: "arm_0_forearm_link"
+      relative_pose:
+        pos: [-0.13, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_10: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 3
+        link_name: "arm_0_forearm_link"
+      relative_pose:
+        pos: [-0.065, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_11: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 3
+        link_name: "arm_0_forearm_link"
+      relative_pose:
+        pos: [0.0, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.06]
+
+    object_12: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 4
+        link_name: "arm_0_wrist_1_link"
+      relative_pose:
+        pos: [0.0, 0.0, -0.09]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.06]
+
+    object_13: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 5
+        link_name: "arm_0_wrist_2_link"
+      relative_pose:
+        pos: [0.0, 0.0, -0.1]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.06]
+
+    object_14: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 6
+        link_name: "arm_0_wrist_3_link"
+      relative_pose:
+        pos: [0.0, 0.0, 0.125]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_15: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 6
+        link_name: "arm_0_wrist_3_link"
+      relative_pose:
+        pos: [0.0, 0.0, 0.055]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.06]
+
+    object_16: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 6
+        link_name: "arm_0_wrist_3_link"
+      relative_pose:
+        pos: [0.0, 0.0, -0.015]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+    
+    object_17: 
+      attached_link:
+        group_name: "arm_0"
+        link_index: 6
+        link_name: "arm_0_wrist_3_link"
+      relative_pose:
+        pos: [0.0, 0.0, -0.095]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+
+  # -------------------------------
+    object_18: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 1
+        link_name: "arm_1_shoulder_link"
+      relative_pose:
+        pos: [0.0, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.07] # radius, length
+
+    object_19: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 2
+        link_name: "arm_1_upper_arm_link"
+      relative_pose:
+        pos: [0.0, 0.0, 0.13]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.07] # radius, length
+
+    object_20: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 2
+        link_name: "arm_1_upper_arm_link"
+      relative_pose:
+        pos: [-0.14, 0.0, 0.13]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.07] # radius, length
+
+    object_21: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 2
+        link_name: "arm_1_upper_arm_link"
+      relative_pose:
+        pos: [-0.28, 0.0, 0.13]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.07] # radius, length
+
+    object_22: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 2
+        link_name: "arm_1_upper_arm_link"
+      relative_pose:
+        pos: [-0.425, 0.0, 0.13]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.07] # radius, length
+
+    object_23: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 3
+        link_name: "arm_1_forearm_link"
+      relative_pose:
+        pos: [-0.325, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_24: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 3
+        link_name: "arm_1_forearm_link"
+      relative_pose:
+        pos: [-0.26, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_25: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 3
+        link_name: "arm_1_forearm_link"
+      relative_pose:
+        pos: [-0.195, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_26: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 3
+        link_name: "arm_1_forearm_link"
+      relative_pose:
+        pos: [-0.1975, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_27: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 3
+        link_name: "arm_1_forearm_link"
+      relative_pose:
+        pos: [-0.13, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_28: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 3
+        link_name: "arm_1_forearm_link"
+      relative_pose:
+        pos: [-0.065, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_29: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 3
+        link_name: "arm_1_forearm_link"
+      relative_pose:
+        pos: [0.0, 0.0, 0.02]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.06]
+
+    object_30: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 4
+        link_name: "arm_1_wrist_1_link"
+      relative_pose:
+        pos: [0.0, 0.0, -0.09]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.06]
+
+    object_31: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 5
+        link_name: "arm_1_wrist_2_link"
+      relative_pose:
+        pos: [0.0, 0.0, -0.1]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.06]
+
+    object_32: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 6
+        link_name: "arm_1_wrist_3_link"
+      relative_pose:
+        pos: [0.0, 0.0, 0.125]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    object_33: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 6
+        link_name: "arm_1_wrist_3_link"
+      relative_pose:
+        pos: [0.0, 0.0, 0.055]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.06]
+
+    object_34: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 6
+        link_name: "arm_1_wrist_3_link"
+      relative_pose:
+        pos: [0.0, 0.0, -0.015]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+    
+    object_35: 
+      attached_link:
+        group_name: "arm_1"
+        link_index: 6
+        link_name: "arm_1_wrist_3_link"
+      relative_pose:
+        pos: [0.0, 0.0, -0.095]
+        euler_xyz: [0.0, 0.0, 0.0]
+      geometry:
+        type: "sphere"
+        params: [0.05]
+
+    

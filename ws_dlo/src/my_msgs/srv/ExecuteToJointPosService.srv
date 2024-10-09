@@ -1,0 +1,8 @@
+# request
+string[] joint_names
+float32[] target_joint_pos
+
+---
+
+# response
+bool success

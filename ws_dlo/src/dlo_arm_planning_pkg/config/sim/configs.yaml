@@ -1,0 +1,66 @@
+project_configs:
+  project_dir: '/home/mingrui/Mingrui/research/project_dlo_planning_22/DLO_planning_2/'
+  
+
+env_configs:
+  sim_or_real: 'sim'
+  dimension: '3D'
+  scene_id: 3
+
+
+dlo_configs:
+  num_fps: 10
+  num_point_per_edge: 3
+  interpolation_type: 1 # 1: ours; 2: ICRA version; 3: purely linear interpolation
+
+
+dlo_identification_configs:
+  pso:
+    n_particles: 50
+    n_iter: 20
+    omega: 0.9
+    c_1: 1.5
+    c_2: 1.5
+
+
+dlo_jacobian_model_configs:
+  offline_model_dir: 'ws_dlo/src/dlo_arm_planning_pkg/models/rbfWeights/'
+  offline_model_name: '10*6'
+  rbfn_num_hidden_unit: 256
+  online_learning:
+    window_time: 2.0
+    min_valid_fps_vel: 0.0
+    max_valid_fps_vel: 0.3
+    fps_vel_normalize_thres: 0.01
+    learning_rate: 10.0
+    update_rate: 50.0 # Hz
+
+
+controller_configs:
+  success_error_thres: 0.05 # L2 norm
+
+  control_rate: 5
+  horizon_step: 3
+  min_dist_thres: 0.01 # must >= the min_dist_thres of the planner
+  control_input_delay_time: 0.05
+  overstretch_thres: 0.01
+
+  dlo_fps_pos_cost_weight: 10.0
+  arm_joint_pos_cost_weight: 1.0
+  arm_joint_vel_cost_weight: 0.1
+  arm_joint_acce_cost_weight: 0.1
+
+  arm_0_max_joint_vel: [0.523, 0.523, 0.523, 1.57, 1.57, 1.57]
+  arm_1_max_joint_vel: [0.523, 0.523, 0.523, 1.57, 1.57, 1.57]
+
+  arm_0_joint_pos_weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  arm_1_joint_pos_weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  arm_0_joint_vel_weights: [1.0, 1.0, 1.0, 0.5, 0.5, 0.3]
+  arm_1_joint_vel_weights: [1.0, 1.0, 1.0, 0.5, 0.5, 0.3]
+  dlo_fps_max_vel: 0.2 # max velocity of each feature point on each dimension (for MPC)
+  max_time_for_final_waypoint: 10.0 # unit: s;
+  max_time_for_manipulation: 180 # unit: s;
+  
+  path_dlo_max_vel: 0.05 # for path interpolation
+  path_dlo_max_avel: 0.523 # for path interpolation
+  path_vel_scale_factor: 0.5 # for path interpolation

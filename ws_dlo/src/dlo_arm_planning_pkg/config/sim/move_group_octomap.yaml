@@ -1,0 +1,16 @@
+# subscribed pointcloud for moveit planning scene
+sensors:
+  - sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater
+    point_cloud_topic: /planning_env/pointcloud
+    max_range: 4.0
+    point_subsample: 1
+    padding_offset: 0.0
+    padding_scale: 1.0
+    max_update_rate: 0.1
+    filtered_cloud_topic: filtered_cloud
+
+
+# octomap for moveit planning scene
+octomap_frame: "world"
+octomap_resolution: 0.01
+max_range: 5.0

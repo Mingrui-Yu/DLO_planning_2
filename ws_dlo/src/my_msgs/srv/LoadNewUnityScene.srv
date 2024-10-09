@@ -1,0 +1,7 @@
+# request
+string scene_name
+
+---
+
+# response
+bool success

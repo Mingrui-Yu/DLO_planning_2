@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="transmission_hw_interface" default="hardware_interface/EffortJointInterface" />
+  
+  <param name="robot_description" command="$(find xacro)/xacro '$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85.xacro'
+  transmission_hw_interface:=$(arg transmission_hw_interface)" 
+  />  
+</launch>

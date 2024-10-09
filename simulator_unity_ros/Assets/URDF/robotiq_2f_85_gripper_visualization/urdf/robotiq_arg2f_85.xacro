@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot name="robotiq_arg2f_85_model" xmlns:xacro="http://ros.org/wiki/xacro">
+   <!-- import main macro -->
+  <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_macro.xacro" />
+
+  <!-- parameters -->
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/EffortJointInterface"/>
+
+  <!-- gripper -->
+  <xacro:robotiq_arg2f_85 
+    prefix=""
+    transmission_hw_interface="$(arg transmission_hw_interface)"/>
+</robot>
