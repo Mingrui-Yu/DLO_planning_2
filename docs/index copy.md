@@ -1,23 +1,18 @@
 # Generalizable whole-body global manipulation of deformable linear objects by dual-arm robot in 3-D constrained environments
 
-<p style="text-align: center;"> 
-<strong> The International Journal of Robotics Research (IJRR), 2024 </strong>
-&nbsp; (Journal version of 
-<a href="https://mingrui-yu.github.io/DLO_planning/" style="color: #0ABAB5; text-decoration: underline;">ICRA 2023</a>)
-</p>
+<p style="text-align: center;"> The International Journal of Robotics Research (IJRR), 2024 </p>
 
-<p style="text-align: center;">
+<!-- The paper is accepted by The International Journal of Robotics Research (IJRR). -->
 
-</p>
+The paper is the journal version of [this (ICRA 2023)](https://mingrui-yu.github.io/DLO_planning/).
 
-<p style="text-align: center;"> Tsinghua University, UC Berkeley </p>
-
-<p style="text-align: center;"> 
-<a href="https://arxiv.org/abs/2310.09899" style="color: #0ABAB5; text-decoration: underline;">arXiv</a> | 
-<a href="https://github.com/Mingrui-Yu/DLO_planning_2" style="color: #0ABAB5; text-decoration: underline;">Code</a>
-</p>
+[[arXiv](https://arxiv.org/abs/2310.09899)] [[Code](https://github.com/Mingrui-Yu/DLO_planning_2)]
 
 ## Video
+
+<!-- <p align="center">
+<iframe width="800" height="450" src="./final_whole.mp4" title="23_DLO_planning_journal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
+</p> -->
 
 <video controls style="width: 100%; height: auto;">
     <source src="./final_whole.mp4" type="video/mp4">

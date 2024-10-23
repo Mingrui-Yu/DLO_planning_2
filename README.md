@@ -186,7 +186,7 @@ rosrun dlo_arm_planning_pkg example_planner_without_unity
 
    You can change the scene id (task id) in the python script.
 
-### Struction of the evalution data of the simualted Tasks
+### Struction of the evalution data of the simulated Tasks
 
 - `data/sim/scene_<id>/`:
 
