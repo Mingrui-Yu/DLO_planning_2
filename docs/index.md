@@ -1,3 +1,5 @@
+# Generalizable whole-body global manipulation of deformable linear objects by dual-arm robot in 3-D constrained environments
+
 <p style="text-align: center;"> 
 <strong> The International Journal of Robotics Research (IJRR), 2024 </strong>
 </p>
