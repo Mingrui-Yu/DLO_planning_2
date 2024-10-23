@@ -1,9 +1,10 @@
-# Generalizable whole-body global manipulation of deformable linear objects by dual-arm robot in 3-D constrained environments
-
 <p style="text-align: center;"> 
 <strong> The International Journal of Robotics Research (IJRR), 2024 </strong>
-&nbsp; (Journal version of 
-<a href="https://mingrui-yu.github.io/DLO_planning/" style="color: #0ABAB5; text-decoration: underline;">ICRA 2023</a>)
+</p>
+
+<p style="text-align: center;"> 
+Journal version of 
+<a href="https://mingrui-yu.github.io/DLO_planning/" style="color: #0ABAB5; text-decoration: underline;">ICRA 2023</a>
 </p>
 
 <p style="text-align: center;">
