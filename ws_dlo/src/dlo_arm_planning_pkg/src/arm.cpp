@@ -269,7 +269,7 @@ namespace dlo_arm_planning_pkg
         // analytical IK
         dual_ur::UR5 ur5;
         std::vector<std::vector<double>> ik_solutions;
-        int n_sols = ur5.inverse(ee_pose_in_base, ik_solutions); // 返回的解的关节角在[0, 2pi]
+        int n_sols = ur5.inverse(ee_pose_in_base, ik_solutions); // the returned joint angles are in [0, 2pi]
 
         if (n_sols == 0)
             return false;

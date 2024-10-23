@@ -118,8 +118,8 @@ namespace dlo_arm_planning_pkg
         const DLOState &dlo_state,
         const Eigen::Vector3d color)
     {
-        // 发布两端pose对应的Axis
-        visual_tools_->deleteAllMarkers(); // 注意：用于清除上一次publish的Axis
+        // publish the axis of DLO end poses
+        visual_tools_->deleteAllMarkers(); // clear the last published axis
 
         // visual_tools_->publishAxis(dlo_state.getLeftEndPose(), rviz_visual_tools::XXXSMALL); // XXXSMALL / XSMALL for visualizing DER
         // visual_tools_->publishAxis(dlo_state.getRightEndPose(), rviz_visual_tools::XXXSMALL);
@@ -134,7 +134,7 @@ namespace dlo_arm_planning_pkg
 
         visual_tools_->trigger();
 
-        // 发布 points
+        // publish points
         auto shape_vis = getMarkerForShapeVis(dlo_state.fps_pos_, color);
         dlo_state_pub_.publish(shape_vis[0]);
         dlo_state_pub_.publish(shape_vis[1]);
@@ -208,7 +208,7 @@ namespace dlo_arm_planning_pkg
         const Eigen::VectorXd &points,
         const Eigen::Vector3d color)
     {
-        // 发布 points
+        // publish points
         auto shape_vis = getMarkerForShapeVis(points, color);
         dlo_state_pub_.publish(shape_vis[0]);
         dlo_state_pub_.publish(shape_vis[1]);
@@ -287,8 +287,6 @@ namespace dlo_arm_planning_pkg
         const std::string text)
     {
         ROS_ERROR_COND(node == nullptr, "publishNode(): the input node is nullptr.");
-        // publishRobotState(Utils::eigenVectorXd2StdVector(node->arm_0_joint_pos_),
-        //                   Utils::eigenVectorXd2StdVector(node->arm_1_joint_pos_));
 
         publishDLOState(node->dlo_state_, Eigen::Vector3d(0, 0, 1));
 

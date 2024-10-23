@@ -38,7 +38,7 @@ namespace dlo_arm_planning_pkg
         dual_arm_ = std::make_shared<DualArm>(nh_, robot_description_name_, req.arm_0_group_name_,
                                               req.arm_1_group_name_, req.dual_arm_group_name_);
 
-        // 加载 ur5 reachibility space
+        // load ur5 reachibility space (actually not used by the latest planner)
         const std::string reach_space_file_dir = "../data/ur5_reach_space/";
         dual_arm_->arm_0_->loadReachSpace(reach_space_file_dir);
         dual_arm_->arm_1_->loadReachSpace(reach_space_file_dir);
@@ -68,16 +68,6 @@ namespace dlo_arm_planning_pkg
             planner->setVisualizer(visualizer);
             success = planner->solve(req, res);
         }
-        // else if(algorithm == "TaskBiRRT"){
-        //     TaskBiRRT::Ptr planner = std::make_shared<TaskBiRRT>(nh_, scene_);
-        //     planner->setVisualizer(visualizer);
-        //     success = planner->solve(req, res);
-        // }
-        // else if(algorithm == "JointBiRRTStar"){
-        //     JointBiRRTStar::Ptr planner = std::make_shared<JointBiRRTStar>(nh_, scene_);
-        //     planner->setVisualizer(visualizer);
-        //     success = planner->solve(req, res);
-        // }
         else
         {
             ROS_ERROR_STREAM("Invalid planning algorithm: " << algorithm);

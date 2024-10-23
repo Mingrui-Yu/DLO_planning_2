@@ -1,12 +1,4 @@
 
-data/sim
-data/real
-data/real_bck
-data/video
-data/code_test
-
-temp_data
-
 results/*
 !results/README.md
 

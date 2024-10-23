@@ -10,9 +10,13 @@ Here we provide:
 
 * A simulator built in Unity for simulating the manipulation and demonstrating the performance.
 
+![Simulation Tasks](docs/sim_tasks.jpg)
+
 ## Installation
 
 1. Install Unity for Linux 2020.03 [doc](https://docs.unity3d.com/2020.2/Documentation/Manual/GettingStartedInstallingHub.html) (First install Unity Hub, then install Unity Editor 2020.03).
+
+1. Install ROS Noetic.
 
 1. Install Eigen 3.4.0 [doc](http://eigen.tuxfamily.org/index.php?title=Main_Page#Download). (Note: required verion >= 3.4.0)
 
@@ -130,7 +134,7 @@ python src/dlo_arm_planning_pkg/scripts/results/plot_derm_projection.py
 
 ### An example to test the planner without using Unity
 
-Test the planner in a custom example environment for tens of times and print the statistic results.
+Test the planner in a custom planning scene for tens of times and print the statistic results.
 
 ```bash
 rosrun dlo_arm_planning_pkg example_planner_without_unity
@@ -182,7 +186,7 @@ rosrun dlo_arm_planning_pkg example_planner_without_unity
 
    You can change the scene id (task id) in the python script.
 
-### Structions of the evalution data of the simualted Task 1, 2, 3, 4
+### Struction of the evalution data of the simualted Tasks
 
 - `data/sim/scene_<id>/`:
 
